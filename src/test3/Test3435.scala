@@ -17,6 +17,14 @@ object Test3435 {
       case _ => l
     }
   }
+  def dropWhile2[A](l: List[A])(f: A => Boolean): List[A] = {
+    l match {
+      case Nil => Nil
+      case Cons(a, tail)  if f(a)  => dropWhile2(tail)(f)
+      case Cons(a, tail)  if !f(a)  => Cons(a, dropWhile2(tail)(f))
+      case _ => l
+    }
+  }
 
   // else Cons(a, dropWhile(tail, f))
   def isLast[A](l: List[A]): Boolean = {
@@ -40,6 +48,7 @@ object Test3435 {
     val filterList = dropWhile(list, (x: Int) => x > 3)
     println(tailList)
     println(filterList)
+    println(dropWhile2(list)(x => x >3))
     println(init(list))
   }
 }
