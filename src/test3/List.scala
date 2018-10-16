@@ -34,10 +34,18 @@ object List {
   def length[A](as: List[A]): Int = {
     foldRight(as, 0)((_, size) => size + 1)
   }
-
+  def reversal[A](l:List[A]):List[A] ={
+    foldLeft(l,Nil:List[A])((x,y)=>Cons(y,x))
+  }
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
   }
 
+  def append[A](l1:List[A],l2:List[A]):List[A]={
+    foldRight(l1,l2)((a,tail)=>Cons(a,tail))
+  }
+  def concat[A](l: List[List[A]]): List[A] ={
+    foldRight(l, Nil:List[A])(append)
+  }
 }
