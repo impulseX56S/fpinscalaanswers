@@ -2,6 +2,9 @@ package test3
 
 import test3.List.append
 import test3.List.reversal
+import test3.List.map
+import test3.List.filter
+import test3.List._
 
 /**
   * 练习3.9 到 3.24
@@ -28,7 +31,7 @@ object Test39 {
   }
 
   def f0(x: Int, y: Int): Int = {
-    println(x + "\t" + y)
+//    println(x + "\t" + y)
     x + y
   }
 
@@ -54,5 +57,13 @@ object Test39 {
     println(reversal(list))
     println(append(list,l2))
     println(appendLeft(l2,list))
+    println(map(list)(a=>a*2))
+    println(map(list)(a=>"str:"+a.toString))
+    println(filter(list)(a=>a%2==0))
+    println(flatMap(list)(a=>List(a,a*10)))
+    println(addLists(list,l2))
+    println(zipLists(list,l2)((a,b)=>"a:"+a+",b:"+b+",a*b ="+a*b))
+    println(hasSubsequence(list,List(2,3,4)))
+    println(hasSubsequence(list,List(2,5,6)))
   }
 }
